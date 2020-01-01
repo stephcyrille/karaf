@@ -12,4 +12,4 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Example from './components/Example';
+import Example from './frontend/front_office/index';

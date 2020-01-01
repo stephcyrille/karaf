@@ -11,8 +11,6 @@ import urls from "./urls";
 import Home from "../../front_office/components/Home/index.js";
 
 
-
-@withRouter
 class Routes extends Component {
   render() {
     return (
