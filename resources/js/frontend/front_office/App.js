@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 
 
 export default
-// @connect((state, props) => ({
-// })) 
+@connect((state, props) => ({
+})) 
 class App extends Component {
   componentWillMount() {
     document.title = 'Home | Karaf'
