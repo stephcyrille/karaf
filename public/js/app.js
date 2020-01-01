@@ -94743,6 +94743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./resources/js/frontend/front_office/store.js");
 var _dec, _class;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -94765,8 +94766,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var App = (_dec = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(function (state, props) {
-  return {};
+  return {
+    developer: state.appCStore.developer
+  };
 }), _dec(_class =
 /*#__PURE__*/
 function (_Component) {
@@ -94782,11 +94786,14 @@ function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       document.title = 'Home | Karaf';
+      console.log("Developper: ", this.props.developer);
+      this.props.dispatch(_store__WEBPACK_IMPORTED_MODULE_2__["appCStoreActions"].setDeveloperName('Developer Lambda'));
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Bienvenu dans Karaf"));
+      console.log("Developper name after: ", this.props.developer);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Bienvenu dans Karaf ", this.props.developer));
     }
   }]);
 
@@ -94845,6 +94852,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appCStoreActions", function() { return actions; });
 /* harmony import */ var redux_act__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-act */ "./node_modules/redux-act/lib/index.js");
 /* harmony import */ var redux_act__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_act__WEBPACK_IMPORTED_MODULE_0__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 var initialState = {
   developer: "---"
@@ -94854,6 +94867,12 @@ var actions = {
 };
 var store = Object(redux_act__WEBPACK_IMPORTED_MODULE_0__["createReducer"])({}, initialState); // stores are called reducers
 
+actions.setDeveloperName = Object(redux_act__WEBPACK_IMPORTED_MODULE_0__["createAction"])('APP_STORE__SET_DEVELOPER_NAME');
+store.on(actions.setDeveloperName, function (state, value) {
+  return _objectSpread({}, state, {
+    developer: value
+  });
+});
 
 
 /***/ }),
