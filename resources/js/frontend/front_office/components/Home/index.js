@@ -11,12 +11,12 @@ class Index extends React.Component {
   }
 
   render() {
-    const { formatMessage } = this.props.intl;
+    // const { formatMessage } = this.props.intl;
 
     return (
       //<!-- Document Wrapper -->
       <div id="wrapper" className="wrapper clearfix">
-        <h1>Hello goodmorning</h1>
+        <h1>Hello good morning</h1>
         <div id="back-to-top" className="backtop">
           <i className="fa fa-long-arrow-up" />
         </div>
