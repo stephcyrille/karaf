@@ -7,6 +7,7 @@ import { IntlProvider } from "react-intl";
 import _ from "underscore";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+
 //import language
 // import messages_en from "../components/languageSelector/translations/en.json";
 // import messages_fr from "../components/languageSelector/translations/fr.json";
@@ -21,6 +22,8 @@ import { connect } from "react-redux";
 // import {getUserLanguage} from "app-js/libs/cookie_utils"
 
 // initAxios();
+
+
 
 export default
 @connect((state, props) => ({

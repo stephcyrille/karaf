@@ -1,6 +1,7 @@
 // this file contains urls
 const urls = {
-    HOME: "/main"
+    HOME: "/",
+    LOGIN: "/login"
   };
   export default urls;
   

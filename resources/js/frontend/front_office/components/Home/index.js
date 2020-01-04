@@ -7,7 +7,7 @@ export default
 @connect((state, props) => ({}))
 class Index extends React.Component {
   componentWillMount() {
-    document.title = 'Home | Karaf'
+    document.title = 'Home | Fac\'Social'
   }
 
   render() {
