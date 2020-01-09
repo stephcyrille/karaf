@@ -62,6 +62,7 @@ class Login extends React.Component {
 
   next() {
     const current = this.state.current + 1;
+    alert("changemen de page imminante...")
     this.setState({ current });
   }
 

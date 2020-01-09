@@ -8,23 +8,12 @@ import _ from "underscore";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-//import language
-// import messages_en from "../components/languageSelector/translations/en.json";
-// import messages_fr from "../components/languageSelector/translations/fr.json";
-//import list of language
-// import LanguageList from "../components/languageSelector/languageList/index";
-//constant
-// import { initAxios } from "../libs/utils/auth_utils";
-//internationalization of andt component
-// import { LocaleProvider } from "antd";
-// import fr_FR from "antd/lib/locale-provider/fr_FR";
-// import enUS from "antd/lib/locale-provider/en_US";
-// import {getUserLanguage} from "app-js/libs/cookie_utils"
-
-// initAxios();
+import { initAxios } from "../libs/utils/auth_utils";
 
 
 
+
+initAxios();
 export default
 @connect((state, props) => ({
   // lang: state.languageSelectorCStore.language
