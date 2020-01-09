@@ -37,8 +37,8 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path={urls.HOME} component={requireAuth(Home)} />
         <Route exact path={urls.LOGIN} component={Login} />
+        <Route exact path={urls.HOME} component={requireAuth(Home)} />
         <Route exact path={urls.NOTFOUND} component={NotFound} />
         <Redirect to={urls.NOTFOUND} />
       </Switch>

@@ -63,6 +63,8 @@ class Login extends React.Component {
   next() {
     const current = this.state.current + 1;
     alert("changemen de page imminante...")
+
+    // Fetch user by username there and catch picture
     this.setState({ current });
   }
 
