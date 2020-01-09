@@ -3,15 +3,43 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 // import url from "../../../front_office/routes/url";
-
-import { Button, Form, FormGroup } from "reactstrap";
+import renderHTML from 'react-render-html';
+import { Form, FormGroup } from "reactstrap";
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from "redux-form";
 
-import { Steps} from 'antd';
-const { Step } = Steps;
+import { Steps, Button, message } from 'antd';
+
 
 
 import './style.local.scss'
+
+const { Step } = Steps;
+
+
+const steps = [
+  {
+    title: 'Pseudo',
+    content: `
+            <div className="iconUser text-center">
+              <i className="far fa-user-circle fa-5x"></i>
+            </div>
+            <label htmlFor="email">Email ou pseudo</label><br />
+            <input type="email" name="email" className="form-control" autofocus required /><br /><br />
+            `
+    ,
+  },
+  {
+    title: 'Mot de passe',
+    content: `
+            <div className="iconUser text-center">
+              <i className="far fa-user-circle fa-5x"></i>
+            </div>
+            <label htmlFor="password">Mot de passe</label><br />
+            <input type="password" name="password" className="form-control" required /><br /><br />`
+    ,
+  },  
+];
+
 
 
 
@@ -19,22 +47,30 @@ export default
 @connect((state, props) => ({}))
 @reduxForm({ form: "loginForm", enableReinitialize: true })
 class Login extends React.Component {
-
-  state = {
-    current: 0,
-  };
-
-
-  onChange = current => {
-    console.log('onChange:', current);
-    this.setState({ current });
-  };
-
-
   componentWillMount(){
     const title = "Login | Fac'Social"
     document.title = title
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: 0,
+    };
+  }
+
+
+  next() {
+    const current = this.state.current + 1;
+    this.setState({ current });
+  }
+
+  prev() {
+    const current = this.state.current - 1;
+    this.setState({ current });
+  }
+
+
 
 
   render() {
@@ -61,34 +97,31 @@ class Login extends React.Component {
               <div id="block2">
               <h3 className="text-center">Se connecter</h3>
 
-                  <Steps current={current} onChange={this.onChange} style={{ paddingTop: "20px" }}>
-                    <Step title="Pseudo" description="" />
-                    <Step title="Mot de passe" description="" disabled={true} />
-                  </Steps>
+                <Steps current={current}>
+                  {steps.map(item => (
+                    <Step key={item.title} title={item.title} />
+                  ))}
+                </Steps>
 
-                  <form className="">
-                    <div className="iconUser text-center">
-                      <i className="far fa-user-circle fa-4x"></i>
-                    </div>
-                    <label htmlFor="email">Email ou pseudo</label><br />
-                    <input type="email" name="email" className="form-control" autofocus required /><br /><br />
-                    <center>
-                      <button type="submit" className="btn-submit"  name="suivant">suivant</button>
-                    </center>
-                  </form>
+                <div className="steps-content">{renderHTML(steps[current].content)}</div>
 
-                  {/*
-                    </form>
-                      <div className="iconUser text-center">
-                        <i className="far fa-user-circle fa-4x"></i>
-                      </div>
-                      <label htmlFor="password">Mot de passe</label><br />
-                      <input type="password" name="password" className="form-control" required /><br /><br />
-                      <center>
-                        <button type="submit" className="btn-submit"  name="suivant">suivant</button>
-                      </center>
-                    </form>
-                  */}
+                <div className="steps-action">
+                  {current < steps.length - 1 && (
+                    <Button type="primary" onClick={() => this.next()}>
+                      Suivant
+                    </Button>
+                  )}
+                  {current === steps.length - 1 && (
+                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                      Soumettre
+                    </Button>
+                  )}
+                  {current > 0 && (
+                    <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+                      Précédant
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
