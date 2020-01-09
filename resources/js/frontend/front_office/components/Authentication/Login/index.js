@@ -98,7 +98,7 @@ class Login extends React.Component {
             </div>
             <div className="col-sm-6">
               <div id="block2">
-              <h3 className="text-center">Se connecter</h3>
+              <h3 className="text-center connectTitle">Se connecter</h3>
 
                 <Steps current={current}>
                   {steps.map(item => (

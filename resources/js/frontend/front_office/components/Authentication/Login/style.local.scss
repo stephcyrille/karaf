@@ -78,7 +78,7 @@ hr+p{
 
 /*Steph Styling*/
 .iconUser{
-	padding: 20px 0 35px 0;
+  padding: 35px 0 35px 0;
 }
 
 .btn.btn-light.btn-md.connect{
@@ -99,3 +99,45 @@ hr+p{
 	background-color: #fff;
 }
 
+
+
+.connectTitle{
+    margin-bottom: 25px;
+    background-color: #05630017;
+    padding: 10px;
+}
+
+/* Ant modifie */
+.ant-steps-item-process.ant-steps-item-icon {
+    background: #6e983d !important;
+}
+
+.ant-steps-item-process.ant-steps-item-icon {
+    border-color: #056300;
+}
+
+.ant-steps-item-finish.ant-steps-item-icon {
+    background-color: #fff !important;
+    border-color: #056300;
+}
+
+.ant-steps-item-finish.ant-steps-item-icon > .ant-steps-icon {
+    color: #6e983d !important;
+}
+
+/* Button form soumettre */
+.ant-btn-primary{
+    color: #fff;
+    background-color: #056300;
+    border-color: #056300;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: #fff;
+    background-color: #6e983d;
+    border-color: #056300;
+}
+.ant-btn:hover, .ant-btn:focus, .ant-btn:active {
+    color: #056300;
+    background-color: #fff;
+    border-color: #6e983d;
+}
