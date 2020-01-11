@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 
 Route::post('auth/register', 'API\AuthenticationController@register');
 Route::post('auth/login', 'API\AuthenticationController@login');
+
+Route::get('auth/users/all', 'API\UserController@index');
+Route::get('profiles/all', 'API\ProfileController@index');
    
 // Route::middleware('auth:api')->group( function () {
 //     Route::resource('products', 'API\ProductController');

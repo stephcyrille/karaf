@@ -68,7 +68,23 @@ class Login extends React.Component {
 
     const loading = true
     this.setState({ loading });
-  }
+
+    // We will use axios there to fetch if user exits
+    window.axios
+      .get("/api/profiles/all")
+      .then(response => {
+        const loading = false
+        this.setState({ loading });
+      })
+      .catch(error => {
+        console.error(error)
+        const loading = false
+        this.setState({ loading });
+
+        alert("Utilisateur non exitsant");
+      });
+    }
+      
 
   prev() {
     const current = this.state.current - 1;
