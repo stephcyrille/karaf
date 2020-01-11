@@ -9,13 +9,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/spinners.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/all.min.css') }}" rel="stylesheet">
         <!-- Styles -->
     </head>
     <body>
         <div>
            <div id="root"></div>
-
+            
             <script src="{{ mix('js/app.js') }}" ></script>
         </div>
     </body>

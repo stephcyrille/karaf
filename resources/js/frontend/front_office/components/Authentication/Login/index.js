@@ -56,16 +56,18 @@ class Login extends React.Component {
     super(props);
     this.state = {
       current: 0,
+      loading: false,
     };
   }
 
 
   next() {
     const current = this.state.current + 1;
-    alert("changemen de page imminante...")
-
     // Fetch user by username there and catch picture
     this.setState({ current });
+
+    const loading = true
+    this.setState({ loading });
   }
 
   prev() {
@@ -81,6 +83,10 @@ class Login extends React.Component {
 
     return (
       <div className="background">
+        { this.state.loading &&
+        <div className="cover-spiner">
+          <div className="whirly-loader" style={{ position: "absolute", left: "48%", top: "40%" }}></div>
+        </div>}
         <div className="container">
           <div className="row" style={{ paddingTop: "100px" }}>
             <div id="block1" className="col-sm-6">
