@@ -81,20 +81,17 @@ hr+p{
   padding: 35px 0 35px 0;
 }
 
-.btn.btn-light.btn-md.connect{
-	border-radius: 0px;
-	color: #6e983d;
-}
-.btn.btn-light.btn-md.connect:hover{
-	background-color: #6e983d;
-	color: #fff;
-}
-
-.btn.btn-outline-light.btn-md.register{
+.btn.btn-outline-light.btn-md.connect{
 	border-radius: 0px;
 	padding: 5px 25px;
+  color: #fff;
+  background-color: #6e983d;
 }
-.btn.btn-outline-light.btn-md.register:hover{
+.btn.btn-outline-light.btn-md.connect.active{
+  color: #6e983d;
+  background-color: #fff;
+}
+.btn.btn-outline-light.btn-md.connect:hover{
 	color: #6e983d;
 	background-color: #fff;
 }
@@ -152,4 +149,10 @@ hr+p{
     bottom: 0;
     background-color: rgba(255, 255,255,0.7);
     z-index: 9999;
+}
+
+.login_picture{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }

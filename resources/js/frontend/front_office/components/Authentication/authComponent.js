@@ -18,7 +18,7 @@ function requireAuth(Acomponent) {
     constructor(props){
       super(props);
       this.state = {
-        auth: Cookie.get('auth')
+        auth: localStorage.getItem("user")
       }
     }
 
@@ -30,7 +30,7 @@ function requireAuth(Acomponent) {
       const location = this.props.location;
       const redirect = location.pathname + location.search;
 
-      if(!Cookie.get('auth')){
+      if(!localStorage.getItem("user")){
         this.props.history.push(`/login?redirect=${redirect}`);
       }
     }
@@ -59,7 +59,7 @@ function requireAuth(Acomponent) {
 
 
     render(){
-      return Cookie.get('auth') ? <Acomponent { ...this.props } /> : null;
+      return localStorage.getItem("user") ? <Acomponent { ...this.props } /> : null;
     }
   }
   return withRouter(AuthenticatedComponent)

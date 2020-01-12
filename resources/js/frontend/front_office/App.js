@@ -50,7 +50,7 @@ class App extends Component {
         >
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
-
+            {/*Check token validity here*/}
             <Routes />
         </div>
 

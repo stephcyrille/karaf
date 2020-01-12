@@ -10,6 +10,7 @@ import { reducer as formReducer } from "redux-form";
 
 import { appCStore } from "../store";
 import { authGuardCStore } from "../components/Authentication/store";
+import { loginCStore } from "../components/Authentication/Login/store";
                                 
 
 
@@ -18,8 +19,11 @@ export const history = createBrowserHistory();
 const cstore = history =>
   combineReducers({
     router: connectRouter(history),
+    form: formReducer,
+
     appCStore: appCStore,
     authGuardCStore: authGuardCStore,
+    loginCStore: loginCStore,
   });
 
 export default function configureStore(preloadedState) {

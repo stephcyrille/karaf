@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
+use Validator;
+
 use App\Models\Profile;
 
 
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,17 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return Profile::all();
+        $profiles = Profile::all();
+        $nber = Profile::all()->count();
+
+        if($nber == 1)
+        {
+          $message = $nber.' utilisateur trouvé.';
+        } else {
+          $message = $nber.' utilisateurs trouvé.';
+        }
+        
+        return $this->sendResponse($profiles, $message);
     }
 
     /**
@@ -74,6 +86,42 @@ class ProfileController extends Controller
     {
         //
     }
+
+    /**
+     * Check the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function check(Request $request)
+    {
+      $validator = Validator::make($request->all(), [
+          'email' => 'required|email',
+      ]);
+ 
+      if($validator->fails()){
+          return $this->sendError('Erreur de validation.', $validator->errors());       
+      }
+
+      $email = $request->get('email');
+      $profile = Profile::where('email', $email)->get();
+
+      // test if profile is really found
+      if($profile->first()===null)
+      {
+        // Return a Json response null
+        $message = 'L\'email ne correspond à aucun utilisateur.';
+        return $this->sendError($message);
+
+      } else {
+        // Return Json response with userprofile
+        // Only expose on request body email, username and picture path
+        $message = 'Utilisateur trouvé.';  
+        return $this->sendResponse($profile->first(), $message);
+      }
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
