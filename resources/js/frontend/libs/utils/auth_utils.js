@@ -63,3 +63,14 @@ export const initAxios = () => {
     });
   }
 };
+
+
+export const isLoggedIn = () => {
+  // We will first check token validity 
+  if(getToken()){
+    return true
+  }
+  else {
+    return false
+  }
+}

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as Cookie from "js-cookie";
 
-import { saveToken, saveUser } from "../../../libs/utils/auth_utils";
+import { saveToken, saveUser, isLoggedIn } from "../../../libs/utils/auth_utils";
 
 import { authGuardCStoreActions } from "./store";
 
@@ -18,7 +18,7 @@ function requireAuth(Acomponent) {
     constructor(props){
       super(props);
       this.state = {
-        auth: localStorage.getItem("user")
+        auth: isLoggedIn()
       }
     }
 
@@ -30,36 +30,14 @@ function requireAuth(Acomponent) {
       const location = this.props.location;
       const redirect = location.pathname + location.search;
 
-      if(!localStorage.getItem("user")){
+      if(!this.state.auth){
         this.props.history.push(`/login?redirect=${redirect}`);
       }
     }
 
 
-    _checkAuthentication = () => {
-      window.axios
-        .get("/rest-auth/user/")
-        .then(response => {
-          // Save loggedIn user on localStorage
-          saveUser(JSON.stringify(response.data));
-          saveToken(response.data.key);
-          this.props.dispatch(authGuardCStoreActions.setAuthChecked());
-          this.props.dispatch(authGuardCStoreActions.setIsAuthenticate());
-          window.location.href = "/";
-        })
-        .catch(error => {
-          console.log("No user loggedIn", error);
-          this.props.dispatch(
-            authGuardCStoreActions.setAuthChecked()
-          );
-        });
-    };
-
-
-
-
     render(){
-      return localStorage.getItem("user") ? <Acomponent { ...this.props } /> : null;
+      return this.state.auth ? <Acomponent { ...this.props } /> : null;
     }
   }
   return withRouter(AuthenticatedComponent)
