@@ -37,6 +37,8 @@ export const minLength6 = minLength(6)
 const email = value => 
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Email invalide' : undefined
+export const passwordMatch = (value, allValues) => 
+  value !== allValues.register_password ? 'Les deux mot de passe doivent être identique' : undefined;
 
 
 const renderField = ({
@@ -99,6 +101,7 @@ class Login extends React.Component {
 
   setLoginForm(){
     this.props.dispatch(loginCStoreActions.setLoginForm());
+    this.props.dispatch(loginCStoreActions.setUnknwoUserMessage(null));
   }
 
 
@@ -194,6 +197,50 @@ class Login extends React.Component {
 
   _handleRegister(formValues){
     console.log('FormValues register >>>', formValues);
+    const loading = true
+    this.props.dispatch(loginCStoreActions.setBtnLoading(loading));
+
+    const data = {
+      name: formValues.register_email,
+      email: formValues.register_email,
+      first_name: formValues.first_name,
+      last_name: formValues.last_name,
+      password: formValues.register_password,
+      password_confirmation: formValues.password_confirmation,
+      birthdate: formValues.birthdate
+    }
+
+
+    window.axios
+      .post("/api/auth/register", data)
+      .then(response => {
+        this.props.dispatch(loginCStoreActions.setUnknwoUserMessage(null));
+        console.log('response >> ', response);
+        const loading = false
+        this.props.dispatch(loginCStoreActions.setBtnLoading(loading));
+
+        let data = response.data.data
+
+        // Save loggedIn user on localStorage
+        saveUser(JSON.stringify(data.userprofile));
+
+        // Save token on localStorage
+        saveToken(data.token)
+
+        if(this.props.location.search){
+          window.location.href = "/"; 
+        } else {
+          let param = new URLSearchParams(this.props.location.search);
+          window.location.href = param.get('redirect'); 
+        }
+      })
+      .catch(error => {        
+        const loading = false
+        this.props.dispatch(loginCStoreActions.setBtnLoading(loading));
+
+        const message = error.response.data.message
+        this.props.dispatch(loginCStoreActions.setUnknwoUserMessage(message));
+      });
   }
 
 
@@ -212,7 +259,7 @@ class Login extends React.Component {
 
     return (
       <div className="background">
-        { loading &&
+        { btnLoading &&
         <div className="cover-spiner">
           <div className="whirly-loader" style={{ position: "absolute", left: "48%", top: "40%" }}></div>
         </div>}
@@ -415,7 +462,7 @@ class Login extends React.Component {
                           <label htmlFor="first_name">Nom</label>
                           <Field 
                             className="form-control"
-                            component="input"
+                            component={renderField}
                             type="text"
                             name="first_name"
                             autoFocus
@@ -426,7 +473,7 @@ class Login extends React.Component {
                           <label htmlFor="last_name">Prénom</label>
                           <Field 
                             className="form-control"
-                            component="input"
+                            component={renderField}
                             type="text"
                             name="last_name"
                             validate={[required, minLength2]}
@@ -436,7 +483,7 @@ class Login extends React.Component {
                           <label htmlFor="email">Email</label>
                           <Field 
                             className="form-control"
-                            component="input"
+                            component={renderField}
                             type="email"
                             name="register_email"
                             validate={[required, email]}
@@ -446,7 +493,7 @@ class Login extends React.Component {
                           <label htmlFor="register_password">Mot de passe</label>
                           <Field 
                             className="form-control"
-                            component="input"
+                            component={renderField}
                             type="password"
                             name="register_password"
                             validate={[required, minLength6]}
@@ -456,10 +503,21 @@ class Login extends React.Component {
                           <label htmlFor="password_confirmation">Confirmation mot de passe</label>
                           <Field 
                             className="form-control"
-                            component="input"
+                            component={renderField}
                             type="password"
                             name="password_confirmation"
-                            validate={[required, minLength6]}
+                            validate={[required, passwordMatch]}
+                          />
+                        </FormGroup>
+
+                        <FormGroup>
+                          <label htmlFor="birthdate">Date de naissance</label>
+                          <Field 
+                            className="form-control"
+                            component={renderField}
+                            type="date"
+                            name="birthdate"
+                            validate={[required]}
                           />
                         </FormGroup>
 
