@@ -36,7 +36,7 @@ class Index extends React.Component {
       //<!-- Document Wrapper -->
       <div id="wrapper" className="container-fluid home">
         <div className="">
-          <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#6e983d" }}>
+          <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#3c8cac" }}>
             <div className="container">
               <a className="navbar-brand" href="#">Navbar</a>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,6 +93,10 @@ class Index extends React.Component {
                     key="1"
                   >
                     <TextArea placeholder="Exprimez votre mood du moment..." allowClear onChange={this.inPutonChange} rows={4} />
+                    <div className="pubButtonWrapper">
+                      <button className="btn btn-primary">Publier</button> &nbsp;
+                      <button className="btn btn-light">Annuler</button>
+                    </div>   
                   </TabPane>
                   <TabPane
                     tab={
@@ -103,7 +107,12 @@ class Index extends React.Component {
                     }
                     key="2"
                   >
-                    Tab 2
+                    <TextArea placeholder="Text ou media..." allowClear onChange={this.inPutonChange} rows={4} />
+                    <div className="pubButtonWrapper">
+                      <button className="btn btn-success">Envoyer</button> &nbsp;
+                      <button className="btn btn-secondary">param</button>&nbsp;
+                      <button className="btn btn-light">Annuler</button>
+                    </div>  
                   </TabPane>
 
                   <TabPane
@@ -115,14 +124,13 @@ class Index extends React.Component {
                     }
                     key="3"
                   >
-                    Tab 2
+                    <Skeleton active paragraph={{ rows: 1 }} />
+                    <div className="pubButtonWrapper">
+                      <button className="btn btn-primary">soumettre</button> &nbsp;
+                      <button className="btn btn-light">Annuler</button>
+                    </div>  
                   </TabPane>
-                </Tabs>
-                    
-                <div className="pubButtonWrapper">
-                  <button className="btn btn-success">Publier</button> &nbsp;
-                  <button className="btn btn-light">Annuler</button>
-                </div>    
+                </Tabs> 
               </div>
 
               <div className="pubLishtFeed">
