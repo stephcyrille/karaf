@@ -176,11 +176,12 @@ class Login extends React.Component {
 
         // Save token on localStorage
         saveToken(data.token)
+        let param = new URLSearchParams(this.props.location.search);
+        console.log("param ", param.get('redirect'))
 
-        if(this.props.location.search){
+        if(!param.get('redirect')){
           window.location.href = "/"; 
         } else {
-          let param = new URLSearchParams(this.props.location.search);
           window.location.href = param.get('redirect'); 
         }
       })
@@ -219,27 +220,20 @@ class Login extends React.Component {
         const loading = false
         this.props.dispatch(loginCStoreActions.setBtnLoading(loading));
 
-        let data = response.data.data
-
-        // Save loggedIn user on localStorage
-        saveUser(JSON.stringify(data.userprofile));
-
-        // Save token on localStorage
-        saveToken(data.token)
-
-        if(this.props.location.search){
+        window.location.href = "/login"; 
+        /* if(this.props.location.search){
           window.location.href = "/"; 
         } else {
           let param = new URLSearchParams(this.props.location.search);
           window.location.href = param.get('redirect'); 
-        }
+        } */
       })
       .catch(error => {        
         const loading = false
         this.props.dispatch(loginCStoreActions.setBtnLoading(loading));
 
-        const message = error.response.data.message
-        this.props.dispatch(loginCStoreActions.setUnknwoUserMessage(message));
+        /* const message = error.response.data.message
+        this.props.dispatch(loginCStoreActions.setUnknwoUserMessage(message)); */
       });
   }
 
@@ -255,7 +249,10 @@ class Login extends React.Component {
 
 
   render() {
-    const { current, loading, checked, user, login, register, unknowMessage, btnLoading, boxChecked, submitting, pristine } = this.props.loginCStore;
+    const { current, loading, checked, user, 
+            login, register, unknowMessage, 
+            btnLoading, boxChecked, submitting, 
+            pristine } = this.props.loginCStore;
 
     return (
       <div className="background">
