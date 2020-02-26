@@ -10,7 +10,7 @@ export default
 @connect((state, props) => ({}))
 class NotFound extends React.Component {
 	componentWillMount(){
-    const title = "Page introuvable | Fac'Social"
+    const title = "Page introuvable | KARAF"
     document.title = title
   }
 

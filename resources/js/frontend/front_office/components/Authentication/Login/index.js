@@ -85,7 +85,7 @@ export default
 @reduxForm({ form: "login", enableReinitialize: true })
 class Login extends React.Component {
   componentWillMount(){
-    const title = "Login | Fac'Social"
+    const title = "Login | KARAF"
     document.title = title
   }
 
@@ -264,9 +264,9 @@ class Login extends React.Component {
           <div className="row" style={{ paddingTop: "100px" }}>
             <div id="block1" className="col-sm-6">
               <h5>Bienvenu dans</h5>
-              <h1 className="main-title">FGI NETWORK</h1>
+              <h1 className="main-title">KARAF</h1>
               <br /><hr />
-              <p>Le premier reseau social universitaire de la Faculte de Genie Industriel. Partager vos requetes, sujets et toutes informations dans une seule communauté constituée de personnes qui sont proches de vous
+              <p>Lorem ipsum Lorem Lorem ipsum Lorem Lorem ipsum LoremLorem ipsum LoremLorem ipsum LoremLorem ipsum LoremLorem ipsum LoremLorem ipsum Lorem Lorem ipsum LoremLorem ipsum LoremLorem 
               </p>
 
                 { login ? 

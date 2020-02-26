@@ -16,7 +16,7 @@ export default
 @connect((state, props) => ({}))
 class Index extends React.Component {
   componentWillMount() {
-    document.title = 'Home | Fac\'Social'
+    document.title = 'Home | KARAF'
   }
 
   logout(){
@@ -82,7 +82,7 @@ class Index extends React.Component {
 
             <div className="col-xs-12 col-sm-12 col-md-6 feedWrapper">
               <div className="card publication">
-                <Tabs defaultActiveKey="1">
+                <Tabs defaultActiveKey="1" style={{ padding: "10px" }} >
                   <TabPane
                     tab={
                       <span>
@@ -109,7 +109,7 @@ class Index extends React.Component {
                   >
                     <TextArea placeholder="Text ou media..." allowClear onChange={this.inPutonChange} rows={4} />
                     <div className="pubButtonWrapper">
-                      <button className="btn btn-success">Envoyer</button> &nbsp;
+                      <button className="btn btn-primary">Envoyer</button> &nbsp;
                       <button className="btn btn-secondary">param</button>&nbsp;
                       <button className="btn btn-light">Annuler</button>
                     </div>  
