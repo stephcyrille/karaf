@@ -63,7 +63,6 @@ const renderField = ({
             color: "red",
             fontSize: "0.8em",
             fontStyle: "italic",
-            fontWeight: "bold",
             display: "block",
             paddingTop: "8px"
           }}
@@ -263,93 +262,134 @@ class Login extends React.Component {
         <div className="container">
           <div className="row" style={{ paddingTop: "100px" }}>
             <div id="block1" className="col-sm-6">
-              <h5>Bienvenu dans</h5>
-              <h1 className="main-title">KARAF</h1>
-              <br /><hr />
-              <p>Lorem ipsum Lorem Lorem ipsum Lorem Lorem ipsum LoremLorem ipsum LoremLorem ipsum LoremLorem ipsum LoremLorem ipsum LoremLorem ipsum Lorem Lorem ipsum LoremLorem ipsum LoremLorem 
+              <img className="img-fluid logo" src="/images/logo_complet.png" alt={"Logo karaf"} />
+              <br />
+              <p className="logo_subtext">Imaginez un monde dans lequel tout est à l'endroit, où retrouver tous vos amis, proches, kiffs mais aussi votre business... Partager votre art, cultures et hobbies avec vos proches où que vous soyez.
               </p>
 
-                { login ? 
-                  <div className="btn-content">
-                    <Button 
-                      className="btn btn-outline-light btn-md connect active"
-                      onClick={() => this.setLoginForm()}
-                    >
-                      Se connecter
-                    </Button>
+              <div className="register_button_acton">
+                <button 
 
-                    <Button 
-                      className="btn btn-outline-light btn-md connect" 
-                      style={{ paddingLeft: "35px", paddingRight: "35px" }}
-                      onClick={() => this.setRegisterForm()}
-                    >
-                      S'inscrire
-                    </Button>
-                  </div>
-                  :
-                  <div className="btn-content">
-                    <Button 
-                      className="btn btn-outline-light btn-md connect"
-                      onClick={() => this.setLoginForm()}
-                    >
-                      Se connecter
-                    </Button>
-
-                    <Button 
-                      className="btn btn-outline-light btn-md connect active" 
-                      style={{ paddingLeft: "35px", paddingRight: "35px" }}
-                      onClick={() => this.setRegisterForm()}
-                    >
-                      S'inscrire
-                    </Button>
-                  </div>
-                }
+                  className="btn btn-outline-light btn-md"
+                >
+                  S'inscrire et YAMO !
+                </button>
+              </div>
             </div>
 
             <div className="col-sm-6">
-                { login == true &&
-                  <div id="block2">
-                    <h3 className="text-center connectTitle">Se connecter</h3>
+                <div id="block2">
+                  <h4 className="text-center connectTitle">Se connecter</h4>
 
-                    <Steps current={current}>
-                      {steps.map(item => (
-                        <Step key={item.title} title={item.title} />
-                      ))}
-                    </Steps>
-                    
-                    {current === 0 && (              
+                  {/* <Steps current={current}>
+                    {steps.map(item => (
+                      <Step key={item.title} title={item.title} />
+                    ))}
+                  </Steps> */}
+                  
+                  {current === 0 && (              
+                    <div className="steps-content">
+                      <Form className="login-form">
+                        <div className="iconUser text-center">
+                          <i className="far fa-user-circle fa-4x"></i>
+                        </div>
+                        <Field 
+                          className="form-control"
+                          component={renderField}
+                          type="email"
+                          placeholder={"Email"}
+                          name="email"
+                          autoFocus
+                          validate={[required, email]}
+                          onChange = {e => this._handleEmailChange(e)}
+                        />
+                          { unknowMessage && 
+                            <span
+                              style={{
+                                paddingLeft: "0",
+                                paddingRight: "1em",
+                                color: "red",
+                                fontSize: "0.8em",
+                                fontStyle: "italic",
+                                display: "block",
+                                paddingTop: "8px"
+                              }}
+                            >
+                              { unknowMessage }
+                            </span>
+                          }
+                        <br />
+                        <div className="steps-action">
+                          <Button 
+                            type="primary" 
+                            disabled={
+                              this.props.submitting ||
+                              this.props.pristine
+                            }
+                            onClick = {this.props.handleSubmit(this.next.bind(this))}
+                          >
+                            Suivant &nbsp;
+                            { btnLoading &&
+                                <Spin indicator={antIcon} />
+                            }
+                          </Button>
+                        </div>
+                      </Form>
+                    </div>)
+                  }
+
+                    {current === 1 && (              
                       <div className="steps-content">
                         <Form>
-                          <div className="iconUser text-center">
-                            <i className="far fa-user-circle fa-5x"></i>
+                            <div className="iconUser text-center">
+                            { user ? user.picture_path ? 
+                                <img className="img-fluid img-thumbnail login_picture" src={user.picture_path} alt={ user.username } /> 
+                                  : 
+                                <i className="far fa-user-circle fa-5x"></i> 
+                                :
+                              <i className="far fa-user-circle fa-5x"></i> 
+                            }
+
+                            { checked &&
+                                <h6 className='text-center' style={{ paddingTop: "10px" }}>
+                                  Bienvenu <b><i>{ user?user.email:'Johhn Doe' }</i></b>
+                                </h6>
+                            }
                           </div>
-                          <label htmlFor="email">Email</label><br />
+                          <label htmlFor="password">Mot de passe</label><br />
                           <Field 
                             className="form-control"
                             component={renderField}
-                            type="email"
-                            label="Entrer votre email"
-                            name="email"
+                            type="password"
+                            name="password"
+                            label="Votre mot de passe"
                             autoFocus
-                            validate={[required, email]}
-                            onChange = {e => this._handleEmailChange(e)}
+                            validate={[required, minLength6]}
                           />
-                           { unknowMessage && 
-                              <span
-                                style={{
-                                  paddingLeft: "0",
-                                  paddingRight: "1em",
-                                  color: "red",
-                                  fontSize: "0.8em",
-                                  fontStyle: "italic",
-                                  fontWeight: "bold",
-                                  display: "block",
-                                  paddingTop: "8px"
-                                }}
-                              >
-                                { unknowMessage }
-                              </span>
-                            }
+                          { unknowMessage && 
+                            <span
+                              style={{
+                                paddingLeft: "0",
+                                paddingRight: "1em",
+                                color: "red",
+                                fontSize: "0.8em",
+                                fontStyle: "italic",
+                                fontWeight: "bold",
+                                display: "block",
+                                paddingTop: "8px"
+                              }}
+                            >
+                              { unknowMessage }
+                            </span>
+                          }
+                          <p style={{ marginTop: "10px" }}>
+                            <Checkbox
+                              checked={ boxChecked }
+                              onChange={ e => this.onCheckChange(e) }
+                            >
+                              Se souvenir de moi
+                            </Checkbox>
+                          </p>
                           <br />
                           <div className="steps-action">
                             <Button 
@@ -358,96 +398,24 @@ class Login extends React.Component {
                                 this.props.submitting ||
                                 this.props.pristine
                               }
-                              onClick = {this.props.handleSubmit(this.next.bind(this))}
+                              onClick = {this.props.handleSubmit(this._handleLogin.bind(this))}
                             >
-                              Suivant &nbsp;
-                              { btnLoading &&
-                                  <Spin indicator={antIcon} />
-                              }
+                              Se connecter
+                            </Button>
+
+                            <Button 
+                              style={{ marginLeft: 8 }} 
+                              onClick={() => this.prev()}
+                            >
+                              Annuler
                             </Button>
                           </div>
                         </Form>
                       </div>)
                     }
-
-                      {current === 1 && (              
-                        <div className="steps-content">
-                          <Form>
-                             <div className="iconUser text-center">
-                              { user ? user.picture_path ? 
-                                  <img className="img-fluid img-thumbnail login_picture" src={user.picture_path} alt={ user.username } /> 
-                                    : 
-                                  <i className="far fa-user-circle fa-5x"></i> 
-                                  :
-                                <i className="far fa-user-circle fa-5x"></i> 
-                              }
-
-                              { checked &&
-                                  <h6 className='text-center' style={{ paddingTop: "10px" }}>
-                                    Bienvenu <b><i>{ user?user.email:'Johhn Doe' }</i></b>
-                                  </h6>
-                              }
-                            </div>
-                            <label htmlFor="password">Mot de passe</label><br />
-                            <Field 
-                              className="form-control"
-                              component={renderField}
-                              type="password"
-                              name="password"
-                              label="Votre mot de passe"
-                              autoFocus
-                              validate={[required, minLength6]}
-                            />
-                            { unknowMessage && 
-                              <span
-                                style={{
-                                  paddingLeft: "0",
-                                  paddingRight: "1em",
-                                  color: "red",
-                                  fontSize: "0.8em",
-                                  fontStyle: "italic",
-                                  fontWeight: "bold",
-                                  display: "block",
-                                  paddingTop: "8px"
-                                }}
-                              >
-                                { unknowMessage }
-                              </span>
-                            }
-                            <p style={{ marginTop: "10px" }}>
-                              <Checkbox
-                                checked={ boxChecked }
-                                onChange={ e => this.onCheckChange(e) }
-                              >
-                                Se souvenir de moi
-                              </Checkbox>
-                            </p>
-                            <br />
-                            <div className="steps-action">
-                              <Button 
-                                type="primary" 
-                                disabled={
-                                  this.props.submitting ||
-                                  this.props.pristine
-                                }
-                                onClick = {this.props.handleSubmit(this._handleLogin.bind(this))}
-                              >
-                                Se connecter
-                              </Button>
-
-                              <Button 
-                                style={{ marginLeft: 8 }} 
-                                onClick={() => this.prev()}
-                              >
-                                Annuler
-                              </Button>
-                            </div>
-                          </Form>
-                        </div>)
-                      }
-                    
-                  </div>
-                }
+                  
+                </div>
+                
 
                 { register == true &&
                   <div id="block2" className="">
@@ -533,6 +501,20 @@ class Login extends React.Component {
                   </div>
                 }
 
+            </div>
+          </div>
+
+          <div className="row footer">
+            <div className="col-md-4">
+              <p className="footer-language">
+                <i style={{ paddingRight: "5px" }} className="fa fa-language"></i> <button className="btn btn-link active">Français</button> <span style={{ padding: "0px 10px" }}>|</span> <button className="btn btn-link">English</button>
+              </p>
+            </div>
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <p className="footer-copyright">
+                &copy; Copyright Karaf 2020, tous droits reservés
+              </p>
             </div>
           </div>
         </div>

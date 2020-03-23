@@ -4,6 +4,11 @@ import { injectIntl } from "react-intl";
 import { Tabs, Icon, Input, Skeleton} from 'antd';
 import { clearToken, clearUser } from '../../../libs/utils/auth_utils';
 
+import Navbar from '../Snippeds/Navbar/index';
+import Release from '../Snippeds/Release/index';
+import Suggestion from '../Snippeds/Suggestion/index';
+import LeftMenu from '../Snippeds/LeftMenu/index';
+
 import './style.local.scss';
 
 
@@ -35,50 +40,13 @@ class Index extends React.Component {
     return (
       //<!-- Document Wrapper -->
       <div id="wrapper" className="container-fluid home">
-        <div className="">
-          <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#3c8cac" }}>
-            <div className="container">
-              <a className="navbar-brand" href="#">Navbar</a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                </ul>
-
-                <form className="form-inline my-2 my-lg-0">
-                  <input className="form-control mr-sm-2 navFormInput" type="search" placeholder="Search" aria-label="Search" />
-                  <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                
-                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Profile
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a className="dropdown-item" href="#">Action</a>
-                      <a className="dropdown-item" href="#">Another action</a>
-                      <div className="dropdown-divider"></div>
-                      <a className="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={ () => this.logout() }>Déconnecter</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
+        <Navbar />
 
         <div className="container-fluid homeBody">
           <div className="row">
-            <div className="col-xs-12 col-md-3 leftNavWrapper"></div>
+            <div className="col-xs-12 col-md-2 leftNavWrapper">
+              <LeftMenu />
+            </div>
 
             <div className="col-xs-12 col-sm-12 col-md-6 feedWrapper">
               <div className="card publication">
@@ -150,7 +118,15 @@ class Index extends React.Component {
 
             </div>
 
-            <div className="col-xs-12 col-md-3 rightNavWrapper"></div>
+            <div className="col-xs-12 col-md-3">
+              <Release />
+              <br />
+              <Suggestion />
+            </div>
+
+            <div className="col-xs-12 col-md-1 rightNavWrapper">
+              
+            </div>
           </div>
         </div>
 

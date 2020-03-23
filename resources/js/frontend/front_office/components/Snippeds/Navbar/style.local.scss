@@ -1,0 +1,41 @@
+.container-fluid.home{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.nav-form .form-control {
+    color: #fff;
+    background-color: #bda42c;
+    background-clip: padding-box;
+    border-top: 0px solid #000;
+    border-right: 0px solid #000;
+    border-left: 0px solid #000;
+    border-bottom: 1px solid rgb(116, 116, 116);
+    border-radius: 0px;
+}
+
+.nav-form .form-control:focus {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-radius: 0px;
+}
+
+.nav-form .form-control:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.nav-form .form-control::placeholder{
+    color: rgb(229, 229, 229);
+}
+
+.form-control.mr-sm-2.navFormInput{
+    width: 300px;
+}
+
+.nav-form .btn.btn-outline-light.my-2.my-sm-0{
+    border-radius: 0px;
+}
+

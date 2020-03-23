@@ -1,126 +1,127 @@
 .background{
-	width: 100%;
-	background: url("/images/1.png");
+  width: 100%;
+  height: 100VH;
+  background: url("/images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 100px;
 }
 
-.main-title{
-  font-family: 'Showcard Gothic';
-  font-size: 4em;
-  margin: 30px;
-}
 #block1{
-  text-align: center;
   color: white;
   margin-bottom: 40px;
 }
-#block2{
-  background: white;
-  width: 350px;
-  margin: auto;
-  padding: 25px 30px 40px 30px;
-  border-radius: 5px;
-}
-hr{
-  width: 300px;
-  background-color: white;
-}
-h5{
-  font-weight: normal;
-  font-size: 17px;
-}
 
-hr+p{
-  width: 80%;
-  margin: 20px auto;
+#block1 img{
+  width: 70%;
+}  
+.logo_subtext{
+  padding-top: 20px;
+  padding-bottom: 15px;
+  width: 70%;
   font-size: 14px;
-}
-.profile{
-  display: block;
-  width: 100px;
-  height: 100px;
-  margin: auto;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-.btn-content{
-  display: flex;
-  justify-content: center;
-}
-.btn-item1{
-  background: white;
-  border-radius: 3px 0px 0px 3px;
-  display: inline-block;
-  font-size: 14px;
-  color: green;
-  padding: 10px 25px;
-}
-.btn-item2{
-  background: inherit;
-  border-radius: 0px 3px 3px 0px;
-  display: inline-block;
-  font-size: 14px;
-  color: white;
-  padding: 10px 25px;
-  border: 2px solid white;
-}
-.btn-submit{
-  background: rgb(70,131,212);
-  color: white;
-  width: 100px;
-  height: 30px;
-  border: none;
-  border-radius: 5px;
+  text-align: justify;
 }
 
-
-
-/*Steph Styling*/
-.iconUser{
-  padding: 35px 0 35px 0;
+.register_button_acton button{
+  padding: 5px 20px;
+  border-radius: 0px;
+}
+.register_button_acton button:hover{
+  background-color: #d6b719;
+  border-color: #bda52c;
+  color: #090a1f;
 }
 
-.btn.btn-outline-light.btn-md.connect{
-	border-radius: 0px;
-	padding: 5px 25px;
+.row.footer{
+  // background-color: #090a1f;
+  padding-top: 40px;
+}
+
+.footer-language{
   color: #fff;
-  background-color: #6e983d;
-}
-.btn.btn-outline-light.btn-md.connect.active{
-  color: #6e983d;
-  background-color: #fff;
-}
-.btn.btn-outline-light.btn-md.connect:hover{
-	color: #6e983d;
-	background-color: #fff;
 }
 
+.footer-language .btn.btn-link{
+  color: #fff;
+  padding: 0px 0px 2px 0px;
+  transition: ease-in;
+  transition-duration: 0.3s;
+}
+.footer-language .btn.btn-link:hover{
+  text-decoration: none;
+  transition: ease-in;
+  transition-duration: 0.3s;
+  color: #d6b719;
+  border-bottom: 2px solid #d6b719;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.footer-language .btn.btn-link.active{
+  color: #d6b719;
+  border-bottom: 2px solid #d6b719;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.footer-language .btn.btn-link.active:hover{
+  color: #fff;
+}
 
+.footer-copyright{
+  color: #fff;
+  text-align: right;
+}
+
+#block2{
+  background: #bda52c;
+  width: 250px;
+  float: right;
+  padding: 25px 30px 30px 30px;
+  border-radius: 5px;
+}
+
+.iconUser{
+  padding: 15px 0 25px 0;
+}
 
 .connectTitle{
-    margin-bottom: 25px;
-    background-color: #05630017;
-    padding: 10px;
+    color: #fff;
+    // padding: 10px;
 }
 
-/* Ant modifie */
-.ant-steps-item-process.ant-steps-item-icon {
-    background: #6e983d !important;
+
+.login-form input.form-control {
+  color: #fff;
+  background-color: #bda42c;
+  background-clip: padding-box;
+  border-top: 0px solid #000;
+  border-right: 0px solid #000;
+  border-left: 0px solid #000;
+  border-bottom: 1px solid rgb(116, 116, 116);
+  border-radius: 0px;
 }
 
-.ant-steps-item-process.ant-steps-item-icon {
-    border-color: #056300;
+.login-form input.form-control:focus {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  border-radius: 0px;
 }
 
-.ant-steps-item-finish.ant-steps-item-icon {
-    background-color: #fff !important;
-    border-color: #056300;
+.login-form input.form-control:focus{
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
 
-.ant-steps-item-finish.ant-steps-item-icon > .ant-steps-icon {
-    color: #6e983d !important;
+.login-form input.form-control::placeholder{
+  color: rgb(229, 229, 229);
 }
+
+.login-form .steps-action{
+  text-align: center;
+}
+
 
 /* Button form soumettre */
 .ant-btn-primary{

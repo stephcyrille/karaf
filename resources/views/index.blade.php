@@ -12,6 +12,11 @@
         <link href="{{ asset('css/spinners.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome/all.min.css') }}" rel="stylesheet">
         <!-- Styles -->
+        <style>
+            body, html{
+                height: 100%;
+            }
+        </style>
     </head>
     <body>
         <div>

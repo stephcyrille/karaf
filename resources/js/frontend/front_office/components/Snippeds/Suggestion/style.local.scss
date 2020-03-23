@@ -1,0 +1,51 @@
+
+.suggestion_wrapper h5{
+    font-weight: bold;
+}
+
+.suggestion_wrapper{
+    background-color: #fff;
+    padding: 20px 15px;
+    border-radius: 5px;
+}
+
+.suggestion_wrapper .h5{
+    border-bottom: 1px solid #cecece;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.suggestion_line{
+    margin-bottom: 10px;
+}
+
+.suggestion_body h4{
+    color: #e6b915;
+    font-weight: bold;
+    margin-bottom: 2px;
+    font-size: 0.98em;
+}
+
+.suggestion_body h5{
+    margin-bottom: 5px;
+    color: #5a628a;
+    font-size: 0.9em;
+}
+
+.suggestion_count{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.suggestion_count h6{
+    color: #e6b915;
+    font-weight: bold;
+}
+
+.suggestion_count h6 i{
+    padding-right: 2px;
+}
+
+.suggestionSeeMore{
+    width: 100%;
+}
