@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { push } from "react-router-redux";
 import { injectIntl } from "react-intl";
-import { Tabs, Icon, Input, Skeleton} from 'antd';
+import { Skeleton } from 'antd';
 import { clearToken, clearUser } from '../../../libs/utils/auth_utils';
 
 import Navbar from '../Snippeds/Navbar/index';
@@ -12,9 +13,6 @@ import LeftMenu from '../Snippeds/LeftMenu/index';
 import './style.local.scss';
 
 
-
-const { TabPane } = Tabs;
-const { TextArea } = Input;
 
 export default
 @injectIntl
@@ -30,9 +28,7 @@ class Index extends React.Component {
     window.location.href = "/login"
   }
 
-  inPutonChange(e){
-    console.log(e);
-  }
+  
 
   render() {
     // const { formatMessage } = this.props.intl;
@@ -62,55 +58,21 @@ class Index extends React.Component {
               </div>
 
               <div className="card publication">
-                <Tabs defaultActiveKey="1" style={{ padding: "10px" }} >
-                  <TabPane
-                    tab={
-                      <span>
-                        <i className="fa fa-"></i>
-                        Publication
-                      </span>
-                    }
-                    key="1"
-                  >
-                    <TextArea placeholder="Exprimez votre mood du moment..." allowClear onChange={this.inPutonChange} rows={4} />
-                    <div className="pubButtonWrapper">
-                      <button className="btn btn-primary">Publier</button> &nbsp;
-                      <button className="btn btn-light">Annuler</button>
-                    </div>   
-                  </TabPane>
-                  <TabPane
-                    tab={
-                      <span>
-                        <Icon type="android" />
-                        Status
-                      </span>
-                    }
-                    key="2"
-                  >
-                    <TextArea placeholder="Text ou media..." allowClear onChange={this.inPutonChange} rows={4} />
-                    <div className="pubButtonWrapper">
-                      <button className="btn btn-primary">Envoyer</button> &nbsp;
-                      <button className="btn btn-secondary">param</button>&nbsp;
-                      <button className="btn btn-light">Annuler</button>
-                    </div>  
-                  </TabPane>
+                <div className="row cardPubContent">
+                  <div className="col-md-2 img-pub-wrapper">
+                    <img className="img-fluid" src="images/helium.jpg" />
+                  </div>
+                  <div className="col-md-10" style={{ paddingRight: "0px" }}>
+                    <div className="publicationText">
+                        <textarea name="" id="txt" className="form-control"></textarea>
+                        <button className="btn btn-outline-primary">publier</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                  <TabPane
-                    tab={
-                      <span>
-                        <Icon type="android" />
-                        Vote
-                      </span>
-                    }
-                    key="3"
-                  >
-                    <Skeleton active paragraph={{ rows: 1 }} />
-                    <div className="pubButtonWrapper">
-                      <button className="btn btn-primary">soumettre</button> &nbsp;
-                      <button className="btn btn-light">Annuler</button>
-                    </div>  
-                  </TabPane>
-                </Tabs> 
+              <div className="row" style={{ marginRight: "0px", marginLeft: "0px" }}>
+                <div className="cardPubFooter"></div>
               </div>
 
               <div className="pubLishtFeed">

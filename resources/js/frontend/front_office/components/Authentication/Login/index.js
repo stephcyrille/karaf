@@ -391,7 +391,7 @@ class Login extends React.Component {
                             </Checkbox>
                           </p>
                           <br />
-                          <div className="steps-action">
+                          <div className="row mr-auto ml-auto">
                             <Button 
                               type="primary" 
                               disabled={
@@ -400,7 +400,7 @@ class Login extends React.Component {
                               }
                               onClick = {this.props.handleSubmit(this._handleLogin.bind(this))}
                             >
-                              Se connecter
+                              connexion
                             </Button>
 
                             <Button 

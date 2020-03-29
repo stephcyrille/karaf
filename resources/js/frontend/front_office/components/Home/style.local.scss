@@ -29,6 +29,46 @@
     color: #fff;
 }
 
+.cardPubContent{
+    padding: 10px 30px;
+}
+.cardPubContent .img-pub-wrapper{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.cardPubContent img{
+    border-radius: 10px;
+}
+
+.publicationText{
+    width: 100%;
+    height: 100%;
+    display:inline-block;
+    position:relative;
+}
+.publicationText textarea{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    resize: vertical;
+    border: 1px solid rgba(136, 102, 50, 0.258);
+    resize: none;
+    border-radius: 20px;
+}
+.publicationText button{
+    position:absolute;
+    bottom:10px;
+    right:15px;
+}
+
+.cardPubFooter{
+    height: 20px;
+    background-color: #bda42c;
+    width: 100%;
+}
+
 
 .pubButtonWrapper{
     padding-top: 10px;

@@ -18,11 +18,11 @@ class LeftMenu extends React.Component {
         <div className="home_menu_left">
             <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }}>
                 <div className="col-md-4 img-wrapper">
-                    <img className="img-fluid rounded-circle img-thumbnail" src="images/particula.png" />
+                    <img className="img-fluid rounded-circle img-thumbnail" src="images/helium.jpg" />
                 </div>
                 <div className="col-md-8">
                     <h5>John Doe</h5>
-                    <p>Disponible</p>
+                    <p><i class="fa fa-circle text-success"></i> Disponible</p>
                 </div>
             </div>
         
@@ -57,6 +57,12 @@ class LeftMenu extends React.Component {
                 <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
                     <a href="#">
                         <i className="fa fa-store" style={{ paddingRight: "5px" }}></i>Boutique
+                        {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
+                    </a>
+                </li>
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
+                    <a href="/music">
+                        <i className="fa fa-music" style={{ paddingRight: "5px" }}></i>Music Store
                         {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
                     </a>
                 </li>

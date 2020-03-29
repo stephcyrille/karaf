@@ -11356,3 +11356,21 @@ a.text-dark:focus {
   }
 }
 
+.text-karaf-pink {
+  color: #f59dc0;
+}
+
+.text-karaf-gold {
+  color: #bda42c !important;
+}
+
+.badge-karaf-pink {
+  color: #fff;
+  background-color: #f59dc0;
+}
+
+.badge-karaf-gold {
+  color: #fff;
+  background-color: #bda42c;
+}
+

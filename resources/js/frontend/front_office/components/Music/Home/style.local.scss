@@ -1,0 +1,85 @@
+.container-fluid.music_home{
+    padding-left: 0px;
+    padding-right: 0px;
+    // background: radial-gradient(#bda42c, #000000);
+}
+
+.music_header{
+    padding-bottom: 10px;
+    background-color: #f8f9fa !important;
+}
+
+
+.music_form_search{
+    padding-top: 48px;
+}
+
+.music_form_search form button{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.music_form_search .form-control{
+    border-radius: 20px;
+}
+
+.music_home_badge{
+    float: right;
+    padding-top: 40px;
+}
+.music_home_badge span{
+    border-radius: 50px;
+    padding: 6px;
+}
+
+.music_home_shop_bag{
+    float: right;
+    padding-top: 40px;
+    padding-right: 10px;
+}
+
+.music_carousel_container{
+    height: 450px;
+    background-color: darkgray;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.music_carousel_container_wrapper{
+    padding: 0px;
+    height: 100%;
+}
+
+.music_carousel_container_wrapper .carousel-item{
+    height: 450px;
+}
+
+.home_carousel_row{
+    height: 150px;
+    width: 100%;
+    background-image: url("/images/bck_row.jpg");
+    background-size: cover;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.home_carousel_row_wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(56, 56, 56, 0.272);
+}
+
+
+.subnav li{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid black;
+}
+.subnav li:nth-last-child(1){
+    border-right: none;
+}
+
+.subnav li a{
+    font-size: 14px;
+    text-transform: uppercase;
+}
