@@ -42,13 +42,25 @@ class Index extends React.Component {
       <div id="wrapper" className="container-fluid home">
         <Navbar />
 
-        <div className="container-fluid homeBody">
+        <div className="container homeBody">
           <div className="row">
-            <div className="col-xs-12 col-md-2 leftNavWrapper">
+            <div className="col-md-12">
+              <img className="img-fluid" src="images/banner.png" />
+            </div>
+          </div>
+          
+          <br />
+
+          <div className="row">
+            <div className="col-xs-12 col-md-3 leftNavWrapper">
               <LeftMenu />
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-6 feedWrapper">
+              <div className="card_publication_header">
+                <h5>Publier maintenant</h5>
+              </div>
+
               <div className="card publication">
                 <Tabs defaultActiveKey="1" style={{ padding: "10px" }} >
                   <TabPane
@@ -124,9 +136,6 @@ class Index extends React.Component {
               <Suggestion />
             </div>
 
-            <div className="col-xs-12 col-md-1 rightNavWrapper">
-              
-            </div>
           </div>
         </div>
 

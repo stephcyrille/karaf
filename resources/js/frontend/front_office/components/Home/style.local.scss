@@ -1,12 +1,12 @@
 .container-fluid.home{
     padding-left: 0px;
     padding-right: 0px;
+    background: radial-gradient(#bda42c, #000000);
 }
 
 .homeBody{
     // background: url("/images/zik4.jpeg") no-repeat center center fixed;
     // background-size: cover;
-    background: radial-gradient(#bda42c, #000000);
     height: 100%;
     padding-top: 30px;
 }
@@ -18,6 +18,17 @@
 .feedWrapper .card.publication{
     padding: 10px;
 }
+.feedWrapper .card_publication_header{
+    width: 100%;
+    background-color: #bda42c;
+    padding: 10px;
+}
+.feedWrapper .card_publication_header h5{
+    margin-bottom: 0px;
+    padding-left: 10px;
+    color: #fff;
+}
+
 
 .pubButtonWrapper{
     padding-top: 10px;

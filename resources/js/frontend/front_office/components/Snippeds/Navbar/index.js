@@ -23,10 +23,10 @@ class Navbar extends React.Component {
 
     return (
       <div className="">
-        <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#bda42c", paddingTop: "0px", paddingBottom: "0px" }}>
+        <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#090a1f", paddingTop: "0px", paddingBottom: "0px" }}>
           <div className="container">
             <a className="navbar-brand" href="#">
-              <img className="img-fluid rounded-circle" src="/images/logo.png" width="50px" style={{ backgroundColor: "#636363" }} />
+              <img className="img-fluid rounded-circle" src="/images/logo.png" width="50px" style={{ backgroundColor: "#090a1f" }} />
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>

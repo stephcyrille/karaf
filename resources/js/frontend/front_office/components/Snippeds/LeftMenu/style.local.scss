@@ -1,7 +1,7 @@
 
 .left_menu_wrapper{
     background-color: #fff;
-    padding: 20px 5px 15px 30px;
+    padding: 0px 0px 15px 0px;
     border-radius: 5px;
 }
 
@@ -9,3 +9,27 @@
     margin-bottom: 10px;
 }
 
+.home_menu_left{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    width: 100%;
+    background-color: #bda42c;
+}
+.home_menu_left h5{
+    padding-top: 5px;
+    margin-bottom: 0px;
+}
+
+.list-group.list-group-flush.home{
+    width: 100%;
+    padding-left: 30px;
+}
+
+.list-group-item.d-flex.justify-content-between.align-items-center.specialLink a:hover{
+    color: #bda42c;
+}
+.list-group-item.d-flex.justify-content-between.align-items-center.specialLink a{
+    text-decoration: none;
+    color: #49473d;
+}

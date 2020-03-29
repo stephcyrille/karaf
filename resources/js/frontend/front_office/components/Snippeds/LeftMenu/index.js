@@ -15,37 +15,60 @@ class LeftMenu extends React.Component {
     return (
       <div className="left_menu_wrapper">
         {/* Line 1 */}
+        <div className="home_menu_left">
+            <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }}>
+                <div className="col-md-4 img-wrapper">
+                    <img className="img-fluid rounded-circle img-thumbnail" src="images/particula.png" />
+                </div>
+                <div className="col-md-8">
+                    <h5>John Doe</h5>
+                    <p>Disponible</p>
+                </div>
+            </div>
+        
+        </div>
 
-
-        <div className="row left_menu_line">
-            <ul className="list-group list-group-flush">
-                <li className="list-group-item d-flex justify-content-between align-items-center"> 
+        <div className="row left_menu_line" style={{ marginLeft: "0px", marginRight: "0px" }}>
+            <ul className="list-group list-group-flush home">
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
                     <a href="#">
-                        Fil d'actualité
-                        <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span>
+                        <i className="fa fa-rss" style={{ paddingRight: "5px" }}></i>Fil d'actualité
+                        <span className="badge badge-warning badge-pill" style={{ marginLeft: "5px" }}>8+</span>
                     </a>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center"> 
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
                     <a href="#">
-                        Tendances 
+                        <i className="fa fa-envelope" style={{ paddingRight: "5px" }}></i>Messages
                         {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
                     </a>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center"> 
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
                     <a href="#">
-                        Signets 
+                        <i className="fa fa-users" style={{ paddingRight: "5px" }}></i>Tous mes groupes
                         {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
                     </a>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center"> 
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
                     <a href="#">
-                        Groupes 
+                        <i className="fa fa-sticky-note" style={{ paddingRight: "5px" }}></i>Pages
                         {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
                     </a>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center"> 
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
                     <a href="#">
-                        Plus 
+                        <i className="fa fa-store" style={{ paddingRight: "5px" }}></i>Boutique
+                        {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
+                    </a>
+                </li>
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
+                    <a href="#">
+                        <i className="fa fa-wallet" style={{ paddingRight: "5px" }}></i>Porte feuille
+                        {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
+                    </a>
+                </li>
+                <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
+                    <a href="#">
+                        <i className="fa fa-ellipsis-h" style={{ paddingRight: "5px" }}></i>Voir plus
                         {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
                     </a>
                 </li>
