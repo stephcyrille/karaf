@@ -39,11 +39,11 @@ class Index extends React.Component {
         <Navbar />
 
         <div className="container homeBody">
-          <div className="row">
+          {/* <div className="row">
             <div className="col-md-12">
               <img className="img-fluid" src="images/banner.png" />
             </div>
-          </div>
+          </div> */}
           
           <br />
 

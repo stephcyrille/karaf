@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import urls from "../../../routes/urls"
 import './style.local.scss';
 
 
@@ -16,16 +17,17 @@ class LeftMenu extends React.Component {
       <div className="left_menu_wrapper">
         {/* Line 1 */}
         <div className="home_menu_left">
-            <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }}>
-                <div className="col-md-4 img-wrapper">
-                    <img className="img-fluid rounded-circle img-thumbnail" src="images/helium.jpg" />
+            <a href={urls.PROFILE}>
+                <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }}>
+                    <div className="col-md-4 img-wrapper">
+                        <img className="img-fluid rounded-circle img-thumbnail" src="images/helium.jpg" />
+                    </div>
+                    <div className="col-md-8">
+                        <h5>John Doe</h5>
+                        <p><i class="fa fa-circle text-success"></i> Disponible</p>
+                    </div>
                 </div>
-                <div className="col-md-8">
-                    <h5>John Doe</h5>
-                    <p><i class="fa fa-circle text-success"></i> Disponible</p>
-                </div>
-            </div>
-        
+            </a>
         </div>
 
         <div className="row left_menu_line" style={{ marginLeft: "0px", marginRight: "0px" }}>
@@ -61,7 +63,7 @@ class LeftMenu extends React.Component {
                     </a>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center specialLink"> 
-                    <a href="/music">
+                    <a href={urls.MUSIC_HOME}>
                         <i className="fa fa-music" style={{ paddingRight: "5px" }}></i>Music Store
                         {/* <span className="badge badge-secondary badge-pill" style={{ marginLeft: "5px" }}>8+</span> */}
                     </a>

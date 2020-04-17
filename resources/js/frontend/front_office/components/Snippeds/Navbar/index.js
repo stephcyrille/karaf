@@ -2,8 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+
 import { clearToken, clearUser } from '../../../../libs/utils/auth_utils';
 
+import urls from "../../../routes/urls"
 import './style.local.scss';
 
 
@@ -25,11 +27,11 @@ class Navbar extends React.Component {
 
     return (
       <div className="">
-        <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#090a1f", paddingTop: "0px", paddingBottom: "0px" }}>
+        <nav className="navbar navbar-expand-lg navbar-dark sticky-top" style={{ backgroundColor: "#f59cbf", paddingTop: "0px", paddingBottom: "0px" }}>
           <div className="container">
-            <Link className="navbar-brand" to="/">
-              <img className="img-fluid rounded-circle" src="/images/logo.png" width="50px" style={{ backgroundColor: "#090a1f" }} />
-            </Link>
+            <a className="navbar-brand" href={urls.HOME}>
+              <img className="img-fluid rounded-circle" src="/images/logo.png" width="50px" style={{ backgroundColor: "#fff" }} />
+            </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -47,7 +49,7 @@ class Navbar extends React.Component {
                   <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 <li className="nav-item" style={{ paddingTop: "5px" }}>
-                  <Link className="nav-link" to="/music"><i className="fas fa-music text-white"></i> Music Store</Link>
+                  <a className="nav-link" href={urls.MUSIC_HOME}><i className="fas fa-music text-white"></i> Music Store</a>
                 </li>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +57,7 @@ class Navbar extends React.Component {
                     <img className="img-fluid rounded-circle" src="images/helium.jpg" width="30px" style={{ border: "2px solid #e0e0e0" }} /> John Doe
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a className="dropdown-item" href="#">Profile</a>
+                    <a className="dropdown-item" href="/profile">Profile</a>
                     <a className="dropdown-item" href="#">Messagerie</a>
                     <a className="dropdown-item" href="#">Groupes</a>
                     <a className="dropdown-item" href="#">Pages</a>

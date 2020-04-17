@@ -16,7 +16,7 @@ class Release extends React.Component {
       <div className="release_wrapper">
         <div className="release_header">
             <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }}>
-                <h5>Dernières sorties</h5>
+                <h5>Vous aimeriez aussi</h5>
             </div>
         </div>
 
