@@ -3,35 +3,93 @@ import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { injectIntl } from "react-intl";
 import { Skeleton } from 'antd';
-import { clearToken, clearUser } from '../../../libs/utils/auth_utils';
+import { reduxForm, Field, propTypes as reduxFormPropTypes } from "redux-form";
 
 import Navbar from '../Snippeds/Navbar/index';
 import Release from '../Snippeds/Release/index';
 import Suggestion from '../Snippeds/Suggestion/index';
 import LeftMenu from '../Snippeds/LeftMenu/index';
+import Publication from './PublicationCard/index';
 
 import './style.local.scss';
+
+import _ from "underscore";
+import { publicationCStoreActions } from './store';
+import moment from "moment";
+import { getUser } from '../../../libs/utils/auth_utils';
 
 
 
 export default
 @injectIntl
-@connect((state, props) => ({}))
+@connect((state, props) => ({
+  publicationCStore: state.publicationCStore,
+}))
+@reduxForm({ form: "homeForm", enableReinitialize: true })
 class Index extends React.Component {
   componentWillMount() {
     document.title = 'Home | KARAF'
   }
 
-  logout(){
-    clearToken()
-    clearUser()
-    window.location.href = "/login"
+  componentDidMount(){
+    this._fetchPublication()
+  }
+
+  _fetchPublication() {
+    this.props.dispatch(publicationCStoreActions.toggleSkeleton(true));
+
+    window.axios
+      .get(
+        `/api/publications/all`
+      )
+
+      .then(response => {
+        this.props.dispatch(
+          publicationCStoreActions.setAllPublications(
+            response.data.data
+          )
+        );
+        this.props.dispatch(publicationCStoreActions.toggleSkeleton(false));
+      })
+      .catch(error => {
+        console.error(error);
+        this.props.dispatch(publicationCStoreActions.toggleSkeleton(false));
+      });
+
+      this.props.reset();
+  }
+
+
+  _handlePostForm(formValues){
+    console.log('FormValues post >>>', formValues);
+    var user = getUser()
+    var content = formValues.postContent
+    var created_by = user.id
+
+    console.log('posted publication before>> ', this.props.publicationCStore.posted_publication);
+    
+
+    window.axios
+      .post(`/api/publications/add`, { content : content,  created_by: created_by})
+
+      .then(response => {
+        console.log('response >> ', response);
+        this._fetchPublication()
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   
 
   render() {
-    // const { formatMessage } = this.props.intl;
+    var publicationList = this.props.publicationCStore.all_publications
+    var skeletton = this.props.publicationCStore.show_skelleton
+
+    publicationList.sort((left, right) => { return moment.utc(right.created_at).diff(moment.utc(left.created_at))})
+
+    console.log("Store pub values -----------", publicationList)
 
     return (
       //<!-- Document Wrapper -->
@@ -63,10 +121,25 @@ class Index extends React.Component {
                     <img className="img-fluid" src="images/helium.jpg" />
                   </div>
                   <div className="col-md-10" style={{ paddingRight: "0px" }}>
-                    <div className="publicationText">
-                        <textarea name="" id="txt" className="form-control"></textarea>
-                        <button className="btn btn-outline-primary">publier</button>
-                    </div>
+                    <form className="publicationText">
+                        <Field 
+                          name="postContent" 
+                          id="txt" 
+                          className="form-control"
+                          component="textarea"
+                          type="text"
+                        />
+                        <button 
+                          className="btn btn-outline-primary"
+                          disabled={
+                            this.props.submitting ||
+                            this.props.pristine
+                          }
+                          onClick = {this.props.handleSubmit(this._handlePostForm.bind(this))}
+                        >
+                          publier
+                        </button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -74,22 +147,51 @@ class Index extends React.Component {
               <div className="row" style={{ marginRight: "0px", marginLeft: "0px" }}>
                 <div className="cardPubFooter"></div>
               </div>
-
+              
               <div className="pubLishtFeed">
-                <div className="card pubListFeedItem">
-                  <Skeleton active avatar paragraph={{ rows: 4 }} />
-                </div>
-                <div className="card pubListFeedItem">
-                  <Skeleton active avatar paragraph={{ rows: 4 }} />
-                </div>
-                <div className="card pubListFeedItem">
-                  <Skeleton active avatar paragraph={{ rows: 4 }} />
-                </div>
-                <div className="card pubListFeedItem">
-                  <Skeleton active avatar paragraph={{ rows: 4 }} />
-                </div>
-              </div>
+                { skeletton ? 
+                  (
+                    <div className="">
+                      <div className="card pubListFeedItem">
+                        <Skeleton active avatar paragraph={{ rows: 4 }} />
+                      </div>
+                      <div className="card pubListFeedItem">
+                        <Skeleton active avatar paragraph={{ rows: 4 }} />
+                      </div>
+                      <div className="card pubListFeedItem">
+                        <Skeleton active avatar paragraph={{ rows: 4 }} />
+                      </div>
+                      <div className="card pubListFeedItem">
+                        <Skeleton active avatar paragraph={{ rows: 4 }} />
+                      </div>
+                    </div>
+                  ):
+                  (
+                    <div className="">
+                      {
+                        !_.isEmpty(publicationList) ? publicationList.map(
+                          ((val, key) => {
+                            return (
+                              <div className="card pubListFeedItem" key = {key}> 
+                                  <Publication 
+                                    username={`${val.created_by.first_name} ${val.created_by.last_name}`} 
+                                    content = { val.content} />
+                              </div>)
+                          })
+                        ):(
+                            <div className="card pubListFeedItem"> 
+                              <Publication 
+                                username={ 'Stéphane Cyrille Mebenga Atanga'} 
+                                content = { 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, quas. Fugiat excepturi eius, tempora maiores explicabo quisquam deserunt! Aliquam qui aspernatur deleniti sapiente hic similique sequi officia. Accusamus, ea sunt!'} />
+                            </div>
+                        )
+                      }
+                    </div>
+                  )
+                  
+                }
 
+              </div>
             </div>
 
             <div className="col-xs-12 col-md-3">
@@ -101,9 +203,6 @@ class Index extends React.Component {
           </div>
         </div>
 
-        {/* <div id="back-to-top" className="backtop">
-          <i className="fa fa-long-arrow-up" />
-        </div> */}
       </div>
     );
   }

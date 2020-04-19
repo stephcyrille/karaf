@@ -24,9 +24,9 @@ class ProfileController extends BaseController
 
         if($nber == 1)
         {
-          $message = $nber.' utilisateur trouvé.';
+          $message = $nber.' utilisateur trouvées.';
         } else {
-          $message = $nber.' utilisateurs trouvé.';
+          $message = $nber.' utilisateur trouvés.';
         }
         
         return $this->sendResponse($profiles, $message);

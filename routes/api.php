@@ -21,7 +21,10 @@ Route::get('auth/users/all', 'API\UserController@index');
 
 Route::get('profiles/all', 'API\ProfileController@index');
 Route::post('profiles/check/email', 'API\ProfileController@check');
-   
+
+Route::get('publications/all', 'API\PublicationController@get_list');
+Route::post('publications/add', 'API\PublicationController@add');
+
 // Route::middleware('auth:api')->group( function () {
 //     Route::resource('products', 'API\ProductController');
 // });

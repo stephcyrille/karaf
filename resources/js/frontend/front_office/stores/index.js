@@ -11,6 +11,7 @@ import { reducer as formReducer } from "redux-form";
 import { appCStore } from "../store";
 import { authGuardCStore } from "../components/Authentication/store";
 import { loginCStore } from "../components/Authentication/Login/store";
+import { publicationCStore } from "../components/Home/store";
                                 
 
 
@@ -24,6 +25,7 @@ const cstore = history =>
     appCStore: appCStore,
     authGuardCStore: authGuardCStore,
     loginCStore: loginCStore,
+    publicationCStore: publicationCStore
   });
 
 export default function configureStore(preloadedState) {

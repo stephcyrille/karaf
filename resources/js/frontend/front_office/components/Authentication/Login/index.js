@@ -1,12 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { push } from "react-router-redux";
-// import url from "../../../front_office/routes/url";
-import renderHTML from 'react-render-html';
 import { Form, FormGroup } from "reactstrap";
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from "redux-form";
-import { Steps, Button, message, Spin, Icon, Checkbox } from 'antd';
+import { Steps, Button, Spin, Icon, Checkbox } from 'antd';
 
 import { loginCStoreActions } from './store';
 import './style.local.scss';
@@ -14,16 +10,6 @@ import './style.local.scss';
 import { saveToken, saveUser } from '../../../../libs/utils/auth_utils';
 
 
-const { Step } = Steps;
-
-const steps = [
-  {
-    title: 'Pseudo',
-  },
-  {
-    title: 'Mot de passe',
-  },  
-];
 
 
 const antIcon = <Icon type="loading" style={{ fontSize: 18, color: "green" }} spin />

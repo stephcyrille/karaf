@@ -24,7 +24,7 @@ class LeftMenu extends React.Component {
                     </div>
                     <div className="col-md-8">
                         <h5>John Doe</h5>
-                        <p><i class="fa fa-circle text-success"></i> Disponible</p>
+                        <p><i className="fa fa-circle text-success"></i> Disponible</p>
                     </div>
                 </div>
             </a>
